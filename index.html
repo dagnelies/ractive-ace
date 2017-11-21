@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Ace plugin for Ractive.js</title>
+
+	<!-- CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='style.css'>
+
+	<!-- Ace -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js'></script>
+	
+
+	<!-- Ractive -->
+	<script src='https://cdn.jsdelivr.net/npm/ractive'></script>
+
+	<!-- this plugin -->
+	<script src='src/ractive-ace.js'></script>
+	
+</head>
+
+<body>
+	<a class='forkme' href='https://github.com/dagnelies/ractive-ace'>Fork me on GitHub</a>
+
+	<header>
+		<h1>Ace plugin for Ractive.js</h1>
+		<p class='strap'>
+			<span class='download'>Debug: &nbsp;&nbsp; <a href='bin/ractive-ace.js'>ractive-ace.js</a><br/>
+			Minified: <a href='bin/ractive-ace.min.js'>ractive-ace.min.js</a></span>
+		</p>
+	</header>
+	
+	<main>
+		<p>A simple wrapper for the ACE editor.</p>
+
+		<div id='demo' class='clearfix'></div>
+
+		<pre id='demo-template-view' class='prettyprint lang-html'></pre>
+		
+		<pre id='demo-code-view' class='prettyprint lang-js'></pre>
+	</main>
+
+	<!-- add additional info such as your homepage here, if you want -->
+	<footer>
+		<p>Copyright &copy; 2015 Arnaud Dagnelies. Licensed MIT</p>
+	</footer>
+
+	<!-- Demo template -->
+	<script id='demo-template' type='text/ractive'>
+		<ace style="height:300px" mode="{{mode}}" theme="{{theme}}" value="{{code}}" />
+		
+		<p>Highlighting mode:
+			<select value="{{mode}}">
+				<option>html</option>
+				<option>javascript</option>
+				<option>css</option>
+				<option>xml</option>
+				<option>text</option>
+			</select>
+			Theme:
+			<select value="{{theme}}">
+				<option value="">(none)</option>
+				<option>monokai</option>
+				<option>eclipse</option>
+				<option>github</option>
+			</select> ...and many others
+		</p>
+	</script>
+
+	<!-- Demo code -->
+	<script id='demo-code'>
+		ractive = new Ractive({
+			el: 'demo',
+			template: '#demo-template',
+			data: {
+				mode: "html",
+				code: document.body.innerHTML
+			}
+		});
+	</script>
+
+	<!-- Insert code into the page -->
+	<script src='prettify.js'></script>
+	<script src='demo.js'></script>
+</body>
+</html>
